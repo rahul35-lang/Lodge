@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Room Booking | Pariwarik Hotel</title>
+    <link rel="stylesheet" href="hotel_booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Sidebar / Filter Panel for Desktop -->
+        <aside class="filter-sidebar">
+            <div class="sidebar-header">
+                <img src="https://pariwarik.shop/menu/logo.jpg" alt="Pariwarik Logo" class="sidebar-logo">
+                <h3>Filters</h3>
+            </div>
+            
+            <div class="filter-group">
+                <label>Search</label>
+                <input type="text" id="desktopSearch" placeholder="Search rooms...">
+            </div>
+
+            <div class="filter-group">
+                <label>Floor Selection</label>
+                <select id="floorFilter">
+                    <option value="all">All Floors</option>
+                    <option value="1">First Floor</option>
+                    <option value="2">Second Floor</option>
+                    <option value="3">Third Floor</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Price Range (Rs)</label>
+                <select id="priceFilter">
+                    <option value="all">All Prices</option>
+                    <option value="0-2000">Under 2,000</option>
+                    <option value="2000-4000">2,000 - 4,000</option>
+                    <option value="4000+">4,000 & Above</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-container">
+            <header class="main-header">
+                <div class="header-content">
+                    <div class="brand-mobile">
+                        <button class="back-btn-mobile">&#8592;</button>
+                        <img src="https://pariwarik.shop/menu/logo.jpg" alt="Logo" class="mobile-logo">
+                        <h1>PARIWARIK HOTEL</h1>
+                    </div>
+                    <div class="header-stats">
+                        <span id="roomCountText">Showing all rooms</span>
+                    </div>
+                </div>
+
+                <!-- Mobile Search Bar -->
+                <div class="mobile-search-container">
+                    <div class="mobile-search-bar">
+                        <span class="search-icon">&#128269;</span>
+                        <input type="text" id="roomSearch" placeholder="Search for rooms...">
+                    </div>
+                </div>
+
+                <!-- Mobile Filter Toggles (Hidden on Desktop) -->
+                <div class="mobile-filters">
+                    <select id="mobileFloorFilter">
+                        <option value="all">Floor: All</option>
+                        <option value="1">1st Floor</option>
+                        <option value="2">2nd Floor</option>
+                    </select>
+                    <select id="mobilePriceFilter">
+                        <option value="all">Price: All</option>
+                        <option value="0-2000">< 2k</option>
+                        <option value="2000-4000">2k - 4k</option>
+                        <option value="4000+">4k+</option>
+                    </select>
+                </div>
+            </header>
+
+            <main class="content-view">
+                <div class="rooms-header-mobile">
+                    <h2>Rooms</h2>
+                    <div class="red-line"></div>
+                </div>
+                <div id="roomsGrid" class="rooms-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </main>
+        </div>
+
+        <!-- Selection Bar -->
+        <div id="selectionBar" class="selection-bar hidden">
+            <div class="selection-info">
+                <span class="selection-label">SELECTED ROOM</span>
+                <span id="selectedRoomDisplay" class="selection-value">-</span>
+            </div>
+            <button id="proceedBtn" class="confirm-booking-btn">
+                PROCEED TO REGISTRATION
+            </button>
+        </div>
+
+        <!-- Registration Modal -->
+        <div id="bookingModal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Confirm Your Stay</h3>
+                    <button id="closeModal" class="close-btn">&times;</button>
+                </div>
+                <form id="bookingForm">
+                    <div class="form-group full">
+                        <label>Room Category & Location</label>
+                        <input type="text" id="modalRoomName" readonly class="readonly-input">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Customer Name *</label>
+                            <input type="text" name="name" required placeholder="Full Name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Primary Phone *</label>
+                            <input type="tel" name="primary" required placeholder="Active mobile number">
+                        </div>
+                        <div class="form-group">
+                            <label>Secondary Phone</label>
+                            <input type="tel" name="secondary" placeholder="Optional">
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>Permanent Address</label>
+                        <textarea name="address" rows="2" placeholder="Full address details"></textarea>
+                    </div>
+                    <button type="submit" class="final-submit-btn">BOOK THIS ROOM</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div id="successOverlay" class="success-overlay hidden">
+            <div class="success-card">
+                <div class="check-mark">&#10003;</div>
+                <h2>Booking Confirmed!</h2>
+                <p>The room has been successfully reserved in our local database.</p>
+                <button id="resetApp" class="done-btn">RETURN TO MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="hotel_booking.js"></script>
+</body>
+</html>
